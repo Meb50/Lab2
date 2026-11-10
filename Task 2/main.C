@@ -4,12 +4,14 @@
 #include <zephyr/kernel.h> //provides kernel functions - allows use of k_sleep
 #include <zephyr/drivers/gpio.h> //provides GPIO functions to control pins
 
-#define SWITCH_NODE DT_NODELABEL(external_switch) //define switch and led refferences
-#define LED_NODE DT_NODELABEL(external_led) //device tree must contain nodes labelled external_switch etc
+#define SWITCH_NODE DT_NODELABEL(external_switch) //define switch and led refferences     
+#define LED_NODE DT_NODELABEL(external_led) //device tree must contain nodes labelled external_switch etc //takes info from app overlay
 
-static const struct gpio_dt_spec switchinput = GPIO_DT_SPEC_GET(SWITCH_NODE, gpios);  //switchinput stores switch gpio info
-
+static const struct gpio_dt_spec switchinput = GPIO_DT_SPEC_GET(SWITCH_NODE, gpios);  //switchinput stores switch gpio info //retrieves and stores info from overlay
+//identifies what component to retrieve info from
 static const struct gpio_dt_spec light = GPIO_DT_SPEC_GET(LED_NODE, gpios); // light stores gpio info for led //pointer to gpio device controlling pin, gets pin number and flags from device tree
+
+
 int main(void) 
     {  
         gpio_pin_configure_dt(&switchinput, GPIO_INPUT); //configures switch pin as input

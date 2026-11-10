@@ -12,7 +12,7 @@
     external_switches { 
     compatible = "gpio-keys"; 
     external_switch: switch_0 { 
-        gpios = <&gpio1 23 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>; //enables internal pull up resistors, switch active when gpio reads low
+        gpios = <&gpio1 23 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>; //enables internal pull up resistors, switch active when gpio reads low //keeps the value stable
         label = "External Switch"; 
         }; 
     };
